@@ -10,13 +10,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Ai-life</title> 
 </head>
-<!-- 開始輸入字時 加上--active -->
-<body class="bodyBg">
-
-    <header>
-        <h1>ailife</h1>
-    </header>
+<!-- 開始輸入字時 加上--chat -->
+<body class="bodyBg --chat">
+    
     <main>
+        <header>
+            <h1>ailife</h1>
+        </header>
+
+
         <h2>we are starting a new life</h2>
 
         <!-- 輸入區 -->
@@ -81,33 +83,40 @@
             </div>
         </div>
         <!-- info end -->
-
-
-
-        <aside>
-            <ul class="menu">
-                <li>
-                    <i class="icon_delete"></i>
-                    Clear conversations
-                </li>
-                <li>
-                    <i class="icon_member"></i>
-                    Upgrade to Plus
-                </li>
-                <li>
-                    <i class="icon_tool"></i>
-                    Settings
-                </li>
-                <li>
-                    <i class="icon_help"></i>
-                    Get help
-                </li>
-                <li>
-                    <i class="icon_logout"></i>
-                    Log out
-                </li>
-            </ul>
-        </aside>
     </main>
+
+
+
+    <aside>
+        <div class="newChat">
+            <button class="newChat_btn">
+                New chat
+            </button>
+        </div>
+        
+    
+        <ul class="menu">
+            <li>
+                <i class="icon_delete"></i>
+                Clear conversations
+            </li>
+            <li>
+                <i class="icon_member"></i>
+                Upgrade to Plus
+            </li>
+            <li>
+                <i class="icon_tool"></i>
+                Settings
+            </li>
+            <li>
+                <i class="icon_help"></i>
+                Get help
+            </li>
+            <li>
+                <i class="icon_logout"></i>
+                Log out
+            </li>
+        </ul>
+    </aside>
 </body>
 </html>

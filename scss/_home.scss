@@ -1,10 +1,14 @@
 .bodyBg{
     background: url(../images/img_bodybg.jpg) no-repeat center bottom fixed;
+
+    @at-root .--chat.bodyBg{
+        @include d_f(flex, 0, 0);
+        flex-wrap: wrap;
+    }
 }
 
 header{
-    height: 200px;
-    padding-top: 56px;
+    margin-bottom: 56px;
 
     h1{
         width: 80px;
@@ -17,6 +21,11 @@ header{
 
 main{
     padding-top: 56px;
+
+    @at-root .--chat main {
+        width: calc(100% - 240px);
+    }
+
 
     h2{
         color: map-get($txt_color, secondary);
@@ -75,9 +84,15 @@ main{
 
 
 .info{
+    @extend %transition;
     @include d_f(flex, 0, space-between);
     max-width: calc(768px - 16px * 2);
     margin: auto;
+    transform: scale(1);
+
+    @at-root .--chat .info{
+        transform: scale(0);
+    }
 
     // .info__box
     &__box{
@@ -133,26 +148,81 @@ main{
 }
 
 aside{
+    @include d_f(flex, center, 0);
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding: 24px 16px;
-    padding-bottom: calc(24px + constant(safe-area-inset-bottom));
-    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+    padding: 8px 16px;
+    padding-bottom: calc(8px + constant(safe-area-inset-bottom));
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
     background: map-get($bg_color, primary);
-    border-top: 1px solid map-get($bg_color, lightblack_alpha);
+    box-shadow: 0 0 5px map-get($bg_color, lightblack_alpha);
+    
+    transform: translate3d(0, 0%, 0);
+
+
+    
+    @at-root .--chat aside{
+        @extend %transition;
+        position: static;
+        width: 240px;
+        height: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        order: -1;
+        // transform: translate3d(0, 100%, 0);
+        
+
+    }
+}
+.newChat_btn{
+    @include pos_a(tbl, 0, 0, 16px);
+    padding: 8px 16px;
+    height: 48px;
+    border-radius: 5px;
+    border: 1px solid map-get($bg_color, lightblack_alpha);
+    color: map-get($txt_color, primary);
+
+    @at-root .--chat .newChat_btn{
+        position: relative;
+        width: 100%;
+        left: auto;
+    }
+
+    &::before{
+        content: '+';
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    @include hoverHandler{
+        background: map-get($bg_color, secondary);
+        color: map-get($txt_color, white);
+    }
 }
 .menu {
     @include d_f(flex, center, space-between);
+    width: 100%;
     max-width: calc(768px - 16px * 2);
     margin: auto;
+
+    @at-root .--chat .menu{
+        flex-direction: column;
+        margin: unset;
+    }
 
     li {
         @extend %hand;
         @include d_f(flex, center, 0);
+        line-height: 48px;
 
         @include hoverHandler{
             filter: brightness(0);
+        }
+
+        @at-root .--chat li {
+            width: 100%;
         }
     }
 
