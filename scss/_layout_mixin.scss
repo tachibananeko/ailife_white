@@ -1,0 +1,95 @@
+// 勾勾
+@mixin checktick($box, $xy, $boder, $bg) {
+	@extend %hand;
+	@include d_f(flex, center, flex-start);
+	position: relative;
+
+	input{
+        display: none;
+    }
+
+	span{
+		position: relative;
+		display: inline-block;
+        width: $box;
+        height: $box;
+		background: $bg;
+		border: 1px solid map-get($bg_color, secondary);
+        margin-right: 5px;
+
+		&::before{
+			@include pos_a(tl, $xy);
+			content: none;
+			display: block;
+			width: calc($box / 2);
+			height: calc($box / 3);
+			border-width: 0 0 $boder $boder;
+			border-style:  solid;
+			border-color: map-get($bg_color, white);
+			transform: rotate(-48deg);
+		}
+	}
+
+	input:checked + span::before{
+		content: '';
+	}
+
+}
+
+// 單選圓圈
+@mixin radio($box, $bg) {
+    @extend %hand;
+	@include d_f(inline-flex, center, flex-start);
+
+	input{
+        display: none;
+    }
+
+	span{
+        position: relative;
+        width: $box;
+        height: $box;
+        display: block;
+        background: map-get($bg_color, white);
+		border-radius: $box;
+        margin-right: 5px;
+
+        &::before{
+            @include pos_a(trbl, 0);
+            content: none;
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            background: $bg;
+			border-radius: 100%;
+            margin: auto;
+        }
+    }
+
+	input:checked + span::before{
+		content: '';
+	}
+}
+
+// loading元件
+@mixin load_set {
+}
+
+// icon設定
+$icon: (
+	'capabilities', 
+	'delete', 
+	'examples', 
+	'help', 
+	'limitations', 
+	'logout', 
+	'member', 
+	'tool',
+);
+
+@each $name in $icon {
+	.icon_#{$name} {
+		display: inline-block;
+		//若沒有svg就讀png
+		background: url(../images/icon_#{$name}.svg) no-repeat center / contain;
+	}
+}
