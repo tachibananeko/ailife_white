@@ -11,7 +11,7 @@
     <title>Ai-life</title> 
 </head>
 <!-- 開始輸入字時 加上--chating -->
-<body class="bodyBg --chating">
+<body class="bodyBg" id="bodyBg">
     
     <main>
         <header>
@@ -34,7 +34,7 @@
 
 
             <label class="chat__tool">
-                <textarea placeholder="Send a message" rows="1"></textarea>
+                <textarea placeholder="Send a message" rows="1" id="sendMag"></textarea>
                 <button class="enter_btn"></button>
             </label>
             <code class="chat__txt">Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts.</code>
@@ -143,5 +143,11 @@
             </li>
         </ul>
     </aside>
+
+    <script>
+        $('#sendMag').focus(()=>{
+            $('#bodyBg').addClass('--chating')
+        })
+    </script>
 </body>
 </html>
