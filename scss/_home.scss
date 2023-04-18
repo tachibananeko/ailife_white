@@ -60,13 +60,15 @@ header{
     }
 }
 .chat{
-    width: calc(768px - 16px * 2);
+    width: calc(100% - 16px * 2);
+    max-width: calc(768px - 16px * 2);
     margin: auto auto 56px;
     
 
     // .chat__area
     &__area{
         @include scrollbar(hidden, auto);
+        width: 100%;
         flex:1 1 100%;
 
         display: none;
@@ -77,9 +79,10 @@ header{
             margin-bottom: 16px;
 
             &:nth-child(even){
-                background: map-get($bg_color, white_alpha);
+                background: map-get($bg_color, lightblack_alpha);
                 border-radius: 5px;
-                border: 1px solid map-get($bg_color, lightblack_alpha);
+                border: 1px solid map-get($bg_color, primary);
+                color: map-get($txt_color, secondary);
             }
         }
     }
@@ -128,7 +131,7 @@ header{
     @at-root .--chating .chat{
         @include d_f(flex, center, flex-end);
         width: calc(100% - 16px * 2);
-        flex:1 1 100%;
+        height: calc(100% - 105px - 16px * 2);
         flex-direction: column;
         margin-bottom: 0;
 
