@@ -170,7 +170,7 @@
 
 
     <!-- loading -->
-    <div class="loading" style="display: none;">
+    <div class="loading" id="loading">
         <div class="loading_pic">
             <div class="loading_ball">
                 <img src="../images/loading_ball.svg" alt="">
@@ -202,6 +202,11 @@
         $('#close_btn').click(() => {
             $('#bodyBg').toggleClass('--active')
         })
+
+        $(document).ready(()=>{ 
+            setTimeout(()=>{ $('#loading').addClass('hide')},2000);
+            setTimeout(()=>{ $('#loading').remove()},2800);
+         })
     </script>
 </body>
 
