@@ -11,6 +11,7 @@
     <title>AILife</title>
 </head>
 <!-- 開始輸入字時 加上--chating -->
+
 <body class="bodyBg" id="bodyBg">
 
     <button id="menu_btn" class="menu_btn" name="button">
@@ -18,7 +19,7 @@
     </button>
 
     <main>
-        <header>
+        <header id="header">
             <h1>ailife</h1>
             <h2>we are starting a new life</h2>
         </header>
@@ -29,10 +30,18 @@
         <!-- 輸入區 -->
         <div class="chat">
             <ul class="chat__area">
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam dicta facere? Dolor laudantium dignissimos minus? Enim saepe ipsa quidem, numquam minus officiis ad aliquid blanditiis labore, dolor neque fugiat!</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam dicta facere? Dolor laudantium dignissimos minus? Enim saepe ipsa quidem, numquam minus officiis ad aliquid blanditiis labore, dolor neque fugiat!</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam dicta facere? Dolor laudantium dignissimos minus? Enim saepe ipsa quidem, numquam minus officiis ad aliquid blanditiis labore, dolor neque fugiat!</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam dicta facere? Dolor laudantium dignissimos minus? Enim saepe ipsa quidem, numquam minus officiis ad aliquid blanditiis labore, dolor neque fugiat!</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam dicta facere? Dolor laudantium
+                    dignissimos minus? Enim saepe ipsa quidem, numquam minus officiis ad aliquid blanditiis labore,
+                    dolor neque fugiat!</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam dicta facere? Dolor laudantium
+                    dignissimos minus? Enim saepe ipsa quidem, numquam minus officiis ad aliquid blanditiis labore,
+                    dolor neque fugiat!</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam dicta facere? Dolor laudantium
+                    dignissimos minus? Enim saepe ipsa quidem, numquam minus officiis ad aliquid blanditiis labore,
+                    dolor neque fugiat!</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam dicta facere? Dolor laudantium
+                    dignissimos minus? Enim saepe ipsa quidem, numquam minus officiis ad aliquid blanditiis labore,
+                    dolor neque fugiat!</li>
             </ul>
 
 
@@ -41,7 +50,8 @@
                 <textarea placeholder="Send a message" rows="1" id="sendMag"></textarea>
                 <button class="enter_btn"></button>
             </label>
-            <code class="chat__txt">Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts.</code>
+            <code
+                class="chat__txt">Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts.</code>
         </div>
         <!-- 輸入區 end -->
 
@@ -115,14 +125,17 @@
             <ul class="newChat__list">
                 <li>
                     <span>Lorem ipsum, dolor sit amet dolor sit amet</span>
+                    <i class="icon_edit"></i>
                     <i class="icon_delete"></i>
                 </li>
                 <li>
                     <span>dolor sit ametdolor sit ametdolor sit amet</span>
+                    <i class="icon_edit"></i>
                     <i class="icon_delete"></i>
                 </li>
                 <li>
                     <span>dolor sit ametdolor sit ametdolor sit amet</span>
+                    <i class="icon_edit"></i>
                     <i class="icon_delete"></i>
                 </li>
             </ul>
@@ -157,7 +170,7 @@
 
 
     <!-- loading -->
-    <div class="loading" style="display: none1;">
+    <div class="loading" style="display: none;">
         <div class="loading_pic">
             <div class="loading_ball">
                 <img src="../images/loading_ball.svg" alt="">
@@ -177,9 +190,19 @@
 
 
     <script>
-        $('#sendMag').focus(()=>{
+        $('#sendMag').focus(() => {
             $('#bodyBg').addClass('--chating')
+        })
+        $('#header').click(() => {
+            $('#bodyBg').removeClass('--chating')
+        })
+        $('#menu_btn').click(() => {
+            $('#bodyBg').addClass('--active')
+        })
+        $('#close_btn').click(() => {
+            $('#bodyBg').toggleClass('--active')
         })
     </script>
 </body>
+
 </html>

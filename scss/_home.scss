@@ -1,457 +1,567 @@
-.bodyBg{
-    background: url(../images/img_bodybg.jpg) no-repeat center bottom fixed;
+.bodyBg {
+	background: url(../images/img_bodybg.jpg) no-repeat center bottom fixed;
 
-    // 漢堡按鈕
-    .menu_btn {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 60px;
-        height: 60px;
-        background: map-get($bg_color, primary);
-        border-radius: 3px;
-        padding: 0 16px;
-        z-index: 1;
+	// 漢堡按鈕
+	.menu_btn {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 60px;
+		height: 60px;
+		background: map-get($bg_color, primary);
+		border-radius: 3px;
+		padding: 0 16px;
+		z-index: 1;
 
-        display: none;
+		display: none;
 
-        @include mw_xs {
-            display: block;
-        }
+		@include mw_xs {
+			display: block;
+		}
 
-        span {
-            position: relative;
-            display: block;
-            width: 100%;
-            height: 2px;
-            background: map-get($bg_color, secondary);
+		span {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 2px;
+			background: map-get($bg_color, secondary);
 
-            &::before,
-            &::after {
-                content: '';
-                position: absolute;
-                display: block;
-                width: 100%;
-                height: 2px;
-                background: map-get($bg_color, secondary);
-                bottom: calc(100% + 6px);
-            }
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 100%;
+				height: 2px;
+				background: map-get($bg_color, secondary);
+				bottom: calc(100% + 6px);
+			}
 
-            &::after {
-                bottom: auto;
-                top: calc(100% + 6px);
-            }
-        }
+			&::after {
+				bottom: auto;
+				top: calc(100% + 6px);
+			}
+		}
 
-        @include hoverHandler {
-            span {
-                background: map-get($bg_color, lightblack_alpha);
+		@include hoverHandler {
+			span {
+				background: map-get($bg_color, lightblack_alpha);
 
-                &::before,
-                &::after {
-                    background: map-get($bg_color, lightblack_alpha);
-                }
-            }
-        }
-    }
+				&::before,
+				&::after {
+					background: map-get($bg_color, lightblack_alpha);
+				}
+			}
+		}
+	}
 }
 
 main {
-    padding: 56px 0;
+	padding: 56px 0;
 
-    @include mw_xs {
-        padding: 24px 0 56px;
-    }
+	@include mw_xs {
+		padding: 24px 0 56px;
+	}
 
-    // 開啟對話
-    @at-root .--chating main {
-        @include d_f(flex, center, 0);
-        flex-direction: column;
-        padding: 16px 0;
-        width: calc(100% - 240px);
-        height: 100%;
-        margin-left: auto;
-
-        @include mw_xs {
-            width: 100%;
-        }
-    }
-}
-
-header{
-    @extend %transition;
-    width: 100%;
-    margin-bottom: 56px;
-
-    h1{
+	// 開啟對話
+	@at-root .--chating main {
+		@include d_f(flex, center, 0);
+		flex-direction: column;
+		padding: 16px 0;
+		width: calc(100% - 240px);
+		height: 100%;
+		margin-left: auto;
         @extend %transition;
-        width: 80px;
-        height: 125px;
-        background: url(../images/icon_logo.svg) no-repeat;
-        color: transparent;
-        margin: auto auto 56px;
-
-        @include mw_xs {
-            width: 40px;
-            height: 62px;
-            margin: auto auto 24px;
-        }
-    }
-
-    h2 {
-        @extend %transition;
-        padding: 0 16px;
-        color: map-get($txt_color, secondary);
-        font-family: 'Comfortaa', sans-serif;
-        font-size: 32px;
-        letter-spacing: 2px;
-        text-align: center;
-        text-transform: uppercase;
-
-        @include mw_md{
-            font-size: 24px;
-        }
-
-        @include mw_xs{
-            font-size: 16px;
-        }
-    }
-
-    // 開啟對話
-    @at-root .--chating header{
-        flex: none;
-        margin-bottom: 0;
-
-        h1{
-            width: 40px;
-            height: 62px;
-        }
-    }
-}
-.chat{
-    width: calc(100% - 16px * 2);
-    max-width: calc(768px - 16px * 2);
-    margin: auto auto 56px;
-
-    // 開啟對話
-    @at-root .--chating .chat {
-        @include d_f(flex, center, flex-end);
-        width: calc(100% - 16px * 2);
-        height: calc(100% - 105px - 16px * 2);
-        flex-direction: column;
-        margin-bottom: 0;
-    }
-
-
-    // .chat__area
-    &__area{
-        @include scrollbar(hidden, auto);
-        width: 100%;
-        flex:1 1 100%;
-
-        display: none;
-
-        // 開啟對話
-        @at-root .--chating .chat__area{
-            display: block;
-        }
-
-        li{
-            padding: 16px;
-            line-height: 24px;
-            margin-bottom: 16px;
-
-            &:nth-child(even){
-                background: map-get($bg_color, lightblack_alpha);
-                border-radius: 5px;
-                border: 1px solid map-get($bg_color, primary);
-                color: map-get($txt_color, secondary);
-            }
-        }
-    }
-
-    // .chat__tool
-    &__tool{
-        @include d_f(flex, center, space-between);
-        width: 100%;
-        padding: 8px 16px;
-        background: map-get($bg_color, primary);
-        border-radius: 5px;
-        border: 1px solid transparent;
-        box-shadow: 0 0 5px map-get($bg_color, lightblack_alpha);
-        margin: auto auto 8px;
-
-        @include hoverHandler{
-            border-color: map-get($bg_color, secondary);
-        }
-
-        textarea{
-            flex: 1 1 100%;
-            min-height: 100%;
-            line-height: 25px;
-        }
-
-        .enter_btn{
-            flex: none;
-            width: 24px;
-            height: 24px;
-            background: url(../images/icon_enter.svg) no-repeat right center / 80%;
-
-            @include hoverHandler{
-                filter: brightness(0);
-            }
-        }
-    }
-
-    // .chat__txt
-    &__txt{
-        display: block;
-        font-size: 12px;
-        text-align: center;
-    }
+		@include mw_xs {
+			width: 100%;
+		}
+	}
 }
 
+header {
+	@extend %transition;
+	width: 100%;
+	margin-bottom: 56px;
 
-.info{
-    @extend %transition;
-    @include d_f(flex, 0, space-between);
-    flex-wrap: wrap;
-    max-width: calc(768px - 16px * 2);
-    margin: auto;
+	h1 {
+		@extend %transition;
+		width: 80px;
+		height: 125px;
+		background: url(../images/icon_logo.svg) no-repeat;
+		color: transparent;
+		margin: auto auto 56px;
 
-    @at-root .--chating .info{
-        display: none;
-    }
+		@include mw_xs {
+			width: 40px;
+			height: 62px;
+			margin: auto auto 24px;
+		}
+	}
 
-    // .info__box
-    &__box{
-        position: relative;
-        width: calc(100% / 3 - 16px);
-        padding: 48px 16px 24px;
-        background: map-get($bg_color, white_alpha);
-        box-shadow: 0 0 5px map-get($bg_color, lightblack_alpha);
-        border-radius: 3px;
+	h2 {
+		@extend %transition;
+		padding: 0 16px;
+		color: map-get($txt_color, secondary);
+		font-family: "Comfortaa", sans-serif;
+		font-size: 32px;
+		letter-spacing: 2px;
+		text-align: center;
+		text-transform: uppercase;
 
-        @include mw_xs{
-            width: calc(100% - 16px * 2);
-            margin: auto auto 56px;
-        }
-    }
+		@include mw_md {
+			font-size: 24px;
+		}
 
-    i{
-        @include pos_a(brl, calc(100% - 30px), 0, 0);
-        width: 60px;
-        height: 60px;
-        background-color: map-get($bg_color, primary);
-        background-size: 50%;
-        border-radius: 60px;
-        box-shadow: 0 0 5px map-get($bg_color, lightblack_alpha);
-        margin: auto;
-    }
+		@include mw_xs {
+			font-size: 16px;
+		}
+	}
 
-    h3{
-        font-size: 20px;
-        font-family: 'Comfortaa', sans-serif;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 16px;
-    }
+	// 開啟對話
+	@at-root .--chating header {
+		flex: none;
+		margin-bottom: 0;
 
-    ul{
-        li{
-            position: relative;
-            padding-left: 16px;
-            line-height: 16px;
+		h1 {
+			width: 40px;
+			height: 62px;
+		}
+	}
+}
+.chat {
+	width: calc(100% - 16px * 2);
+	max-width: calc(768px - 16px * 2);
+	margin: auto auto 56px;
 
-            &:not(:last-child){
-                margin-bottom: 16px;
-            }
+	// 開啟對話
+	@at-root .--chating .chat {
+		@include d_f(flex, center, flex-end);
+		width: calc(100% - 16px * 2);
+		height: calc(100% - 105px - 16px * 2);
+		flex-direction: column;
+		margin-bottom: 0;
+	}
 
-            &::before{
-                @include pos_a(tbl, 0);
-                content: '';
-                width: 5px;
-                height: 5px;
-                background: map-get($bg_color, secondary);
-                border-radius: 5px;
-                margin: auto;
+	// .chat__area
+	&__area {
+		@include scrollbar(hidden, auto);
+		width: 100%;
+		flex: 1 1 100%;
 
-            }
-        }
-    }
+		display: none;
+
+		// 開啟對話
+		@at-root .--chating .chat__area {
+			display: block;
+		}
+
+		li {
+			padding: 16px;
+			line-height: 24px;
+			margin-bottom: 16px;
+
+			&:nth-child(even) {
+				background: map-get($bg_color, lightblack_alpha);
+				border-radius: 5px;
+				border: 1px solid map-get($bg_color, primary);
+				color: map-get($txt_color, secondary);
+			}
+		}
+	}
+
+	// .chat__tool
+	&__tool {
+		@include d_f(flex, center, space-between);
+		width: 100%;
+		padding: 8px 16px;
+		background: map-get($bg_color, primary);
+		border-radius: 5px;
+		border: 1px solid transparent;
+		box-shadow: 0 0 5px map-get($bg_color, lightblack_alpha);
+		margin: auto auto 8px;
+
+		@include hoverHandler {
+			border-color: map-get($bg_color, secondary);
+		}
+
+		textarea {
+			flex: 1 1 100%;
+			min-height: 100%;
+			line-height: 25px;
+		}
+
+		.enter_btn {
+			flex: none;
+			width: 24px;
+			height: 24px;
+			background: url(../images/icon_enter.svg) no-repeat right center /
+				80%;
+
+			@include hoverHandler {
+				filter: brightness(0);
+			}
+		}
+	}
+
+	// .chat__txt
+	&__txt {
+		display: block;
+		font-size: 12px;
+		text-align: center;
+	}
 }
 
-aside{
-    @extend %transition;
-    @include d_f(flex, center, 0);
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 8px 16px;
-    padding-bottom: calc(8px + constant(safe-area-inset-bottom));
-    padding-bottom: calc(8px + env(safe-area-inset-bottom));
-    background: map-get($bg_color, primary);
-    box-shadow: 0 0 5px map-get($bg_color, lightblack_alpha);
+.info {
+	@extend %transition;
+	@include d_f(flex, 0, space-between);
+	flex-wrap: wrap;
+	max-width: calc(768px - 16px * 2);
+	margin: auto;
 
-    transform: translate3d(0, 0%, 0);
-    z-index: 2;
+	@at-root .--chating .info {
+		display: none;
+	}
 
-    @include mw_xs{
-        width: 240px;
-        height: 100%;
-        padding: 0;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
+	// .info__box
+	&__box {
+		position: relative;
+		width: calc(100% / 3 - 16px);
+		padding: 48px 16px 24px;
+		background: map-get($bg_color, white_alpha);
+		box-shadow: 0 0 5px map-get($bg_color, lightblack_alpha);
+		border-radius: 3px;
 
-        transform: translate3d(-100%, 0, 0);
+		@include mw_xs {
+			width: calc(100% - 16px * 2);
+			margin: auto auto 56px;
+		}
+	}
 
-        @at-root .--active aside{
-            transform: translate3d(0%, 0, 0);
-        }
-    }
+	i {
+		@include pos_a(brl, calc(100% - 30px), 0, 0);
+		width: 60px;
+		height: 60px;
+		background-color: map-get($bg_color, primary);
+		background-size: 50%;
+		border-radius: 60px;
+		box-shadow: 0 0 5px map-get($bg_color, lightblack_alpha);
+		margin: auto;
+	}
 
-    @at-root .--chating aside{
-        width: 240px;
-        padding: 0;
-        top: 0;
-        left: 0;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
-    }
+	h3 {
+		font-size: 20px;
+		font-family: "Comfortaa", sans-serif;
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 16px;
+	}
 
-    .close_btn{
-        flex: none;
-        width: 32px;
-        height: 32px;
-        background: url(../images/icon_x.svg) no-repeat center / 16px;
-        margin: 8px 8px 0 auto ;
+	ul {
+		li {
+			position: relative;
+			padding-left: 16px;
+			line-height: 16px;
 
-        display: none;
+			&:not(:last-child) {
+				margin-bottom: 16px;
+			}
 
-        @include mw_xs{
-            display: block;
-        }
-
-        @include hoverHandler{
-            opacity: 0.6;
-        }
-    }
+			&::before {
+				@include pos_a(tbl, 0);
+				content: "";
+				width: 5px;
+				height: 5px;
+				background: map-get($bg_color, secondary);
+				border-radius: 5px;
+				margin: auto;
+			}
+		}
+	}
 }
 
-.newChat{
-    @include scrollbar(hidden, auto);
-    position: static;
-    flex:1 1 100%;
-    width: 100%;
-    padding: 16px;
+aside {
+	@extend %transition;
+	@include d_f(flex, center, 0);
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding: 8px 16px;
+	padding-bottom: calc(8px + constant(safe-area-inset-bottom));
+	padding-bottom: calc(8px + env(safe-area-inset-bottom));
+	background: map-get($bg_color, primary);
+	box-shadow: 0 0 5px map-get($bg_color, lightblack_alpha);
+	transform: translate3d(0, 0%, 0);
+	z-index: 2;
 
-    display: none;
+	@at-root .--chating aside {
+		animation: asideAni 1s forwards;
+		@include mw_xs {
+			animation: asideAniXSUnActive 0.3s ease-in-out forwards;
+		}
+	}
+	@include mw_xs {
+	}
+	@keyframes asideAni {
+		0% {
+			opacity: 1;
+			width: 100%;
+			transform: translate3d(0, 0%, 0);
+		}
+		20% {
+			opacity: 0;
+			width: 100%;
+			transform: translate3d(0, 100%, 0);
+		}
+		40% {
+			opacity: 0;
+			width: 240px;
+			padding: 0;
+			top: 0;
+			left: 0;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: space-between;
+			transform: translate3d(-100%, 0%, 0);
+		}
+		100% {
+			width: 240px;
+			padding: 0;
+			top: 0;
+			left: 0;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: space-between;
+			transform: translate3d(0%, 0%, 0);
+		}
+	}
+	@keyframes asideAniXS {
+		0% {
+			opacity: 1;
+			width: 100%;
+			transform: translate3d(0, 0%, 0);
+		}
+		20% {
+			opacity: 0;
+			width: 100%;
+			transform: translate3d(0, 100%, 0);
+		}
+		40% {
+			opacity: 0;
+			width: 240px;
+			padding: 0;
+			top: 0;
+			left: 0;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: space-between;
+			transform: translate3d(-100%, 0%, 0);
+		}
+		100% {
+			width: 240px;
+			padding: 0;
+			top: 0;
+			left: 0;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: space-between;
+			transform: translate3d(-100%, 0%, 0);
+		}
+	}
+	@keyframes asideAniXSUnActive {
+		0% {
+			transform: translate3d(0%, 0%, 0);
+		}
+		100% {
+			transform: translate3d(-100%, 0%, 0);
+		}
+	}
+	@keyframes asideAniXSActive {
+		0% {
+			transform: translate3d(-100%, 0%, 0);
+		}
+		100% {
+			transform: translate3d(0%, 0%, 0);
+		}
+	}
+	@include mw_xs {
+		width: 240px;
+		height: 100%;
+		padding: 0;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+		transform: translate3d(-100%, 0, 0);
+		animation: asideAniXSUnActive 0.3s ease-in-out forwards;
+		@at-root .--active aside {
+			animation: asideAniXSActive 0.3s ease-in-out forwards;
+			// transform: translate3d(0%, 0, 0);
+		}
+	}
+	.close_btn {
+		flex: none;
+		width: 32px;
+		height: 32px;
+		background: url(../images/icon_x.svg) no-repeat center / 16px;
+		margin: 8px 8px 0 auto;
+		display: none;
 
-    @include mw_xs{
-        display: block;
-    }
+		@include mw_xs {
+			display: block;
+		}
 
-    @at-root .--chating .newChat{
-        display: block;
-    }
+		@include hoverHandler {
+			opacity: 0.6;
+		}
+	}
+}
 
-    // .newChat_btn
-    &_btn{
-        width: 100%;
-        height: 32px;
-        padding: 8px 16px;
-        border-radius: 5px;
-        border: 1px solid map-get($bg_color, lightblack_alpha);
-        color: map-get($txt_color, primary);
+.newChat {
+	@include scrollbar(hidden, auto);
+	position: static;
+	flex: 1 1 100%;
+	width: 100%;
+	padding: 16px;
 
-        &::before{
-            content: '+';
-            font-weight: bold;
-            margin-right: 8px;
-        }
+	display: none;
 
-        @include hoverHandler{
-            background: map-get($bg_color, secondary);
-            color: map-get($txt_color, white);
-        }
-    }
+	@include mw_xs {
+		display: block;
+	}
 
-    // .newChat__list
-    &__list{
-        padding: 16px 0;
+	@at-root .--chating .newChat {
+		display: block;
+		animation: chatAni 1.5s forwards;
+	}
+	@keyframes chatAni {
+		0% {
+			position: absolute;
+			top: 100%;
+		}
+		100% {
+			position: relative;
+		}
+	}
+	// .newChat_btn
+	&_btn {
+		width: 100%;
+		height: 32px;
+		padding: 8px 16px;
+		border-radius: 5px;
+		border: 1px solid map-get($bg_color, lightblack_alpha);
+		color: map-get($txt_color, primary);
 
-        li{
-            @include d_f(flex, center, 0);
-            line-height: 32px;
-        }
-        span{
-            display: block;
-            flex: 1 1 100%;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-        }
+		&::before {
+			content: "+";
+			font-weight: bold;
+			margin-right: 8px;
+		}
 
-        i{
-            @extend %hand;
-            flex: none;
-            width: 16px;
-            height: 16px;
+		@include hoverHandler {
+			background: map-get($bg_color, secondary);
+			color: map-get($txt_color, white);
+		}
+	}
 
-            @include hoverHandler{
-                transform: scale(1.1);
-                filter: brightness(0);
-            }
-        }
-    }
+	// .newChat__list
+	&__list {
+		padding: 16px 0;
+
+		li {
+			@include d_f(flex, center, 0);
+			line-height: 32px;
+		}
+		span {
+			display: block;
+			flex: 1 1 100%;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		i {
+			@extend %hand;
+			flex: none;
+			width: 16px;
+			height: 16px;
+
+			@include hoverHandler {
+				transform: scale(1.1);
+				filter: brightness(0);
+			}
+		}
+		i + i {
+			margin-left: 5px;
+		}
+	}
 }
 .menu {
-    @include d_f(flex, center, space-between);
-    flex: none;
-    width: 100%;
-    max-width: calc(768px - 16px * 2);
-    padding: 0 16px;
-    margin: auto;
+	@include d_f(flex, center, space-between);
+	flex: none;
+	width: 100%;
+	max-width: calc(768px - 16px * 2);
+	padding: 0 16px;
+	margin: auto;
 
-    @include mw_xs{
-        flex-direction: column;
-        padding: 16px;
-        border-top: 1px solid map-get($bg_color, lightblack_alpha);
-        margin: unset;
-    }
+	@include mw_xs {
+		flex-direction: column;
+		padding: 16px;
+		border-top: 1px solid map-get($bg_color, lightblack_alpha);
+		margin: unset;
+	}
 
-    @at-root .--chating .menu{
-        flex-direction: column;
-        padding: 16px;
-        border-top: 1px solid map-get($bg_color, lightblack_alpha);
-        margin: unset;
-    }
+	@at-root .--chating .menu {
+		// flex-direction: column;
+		// padding: 16px;
+		// border-top: 1px solid map-get($bg_color, lightblack_alpha);
+		// margin: unset;
+		animation: menuAni 1.5s forwards;
+	}
+	@keyframes menuAni {
+		0% {
+			opacity: 0;
+			flex-direction: row;
+		}
+		100% {
+			opacity: 1;
+			flex-direction: column;
+			padding: 16px;
+			border-top: 1px solid map-get($bg_color, lightblack_alpha);
+			margin: unset;
+		}
+	}
+	li {
+		@extend %hand;
+		@include d_f(flex, center, 0);
+		line-height: 32px;
 
-    li {
-        @extend %hand;
-        @include d_f(flex, center, 0);
-        line-height: 32px;
+		@include mw_xs {
+			width: 100%;
+		}
 
-        @include mw_xs{
-            width: 100%;
-        }
+		@at-root .--chating li {
+			width: 100%;
+			animation: menuLiAni 1.5s forwards;
+		}
 
-        @at-root .--chating li {
-            width: 100%;
-        }
+		@keyframes menuLiAni {
+			0% {
+				width: auto;
+			}
+			100% {
+				width: 100%;
+			}
+		}
 
-        @include hoverHandler {
-            filter: brightness(0);
-        }
-    }
+		@include hoverHandler {
+			filter: brightness(0);
+		}
+	}
 
-    i{
-        width: 16px;
-        height: 16px;
-        margin-right: 8px;
-    }
+	i {
+		width: 16px;
+		height: 16px;
+		margin-right: 8px;
+	}
 }
 
 .loading {
@@ -488,7 +598,7 @@ aside{
 	// .loading_txt
 	&_txt {
 		position: relative;
-		@include d_f(flex,flex-end);
+		@include d_f(flex, flex-end);
 		width: 135px;
 		height: 73px;
 		img:nth-child(1) {
@@ -501,6 +611,7 @@ aside{
 		}
 	}
 }
+
 @keyframes loading_body {
 	0% {
 		transform: rotate(0);

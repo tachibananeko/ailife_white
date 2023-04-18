@@ -35,7 +35,7 @@
 }
 
 @mixin d_f($flex, $ai:stretch, $jc:flex-start) {
-	display: $flex;	
+	display: $flex;
 	@if ($ai!=0){
 		align-items: $ai;
 	}

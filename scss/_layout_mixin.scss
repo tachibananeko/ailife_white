@@ -76,14 +76,15 @@
 
 // icon設定
 $icon: (
-	'capabilities', 
-	'delete', 
-	'examples', 
-	'help', 
-	'limitations', 
-	'logout', 
-	'member', 
+	'capabilities',
+	'delete',
+	'examples',
+	'help',
+	'limitations',
+	'logout',
+	'member',
 	'tool',
+	'edit',
 );
 
 @each $name in $icon {
