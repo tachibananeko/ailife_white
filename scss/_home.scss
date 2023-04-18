@@ -54,11 +54,6 @@
             }
         }
     }
-
-    // 開啟對話
-    @at-root .--chating.bodyBg{
-        @include d_f(flex, 0, flex-end);
-    }
 }
 
 main {
@@ -75,6 +70,7 @@ main {
         padding: 16px 0;
         width: calc(100% - 240px);
         height: 100%;
+        margin-left: auto;
 
         @include mw_xs {
             width: 100%;
@@ -98,7 +94,7 @@ header{
         @include mw_xs {
             width: 40px;
             height: 62px;
-            margin: auto auto 16px;
+            margin: auto auto 24px;
         }
     }
 
@@ -129,7 +125,6 @@ header{
         h1{
             width: 40px;
             height: 62px;
-            margin-bottom: 8px;
         }
     }
 }
